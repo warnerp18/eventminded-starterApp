@@ -1,0 +1,51 @@
+<head>
+  <title>myapp</title>
+</head>
+
+<body>
+  <div class='containers'>
+    <div class="login">
+      {{> loginButtons}}
+    </div>
+    {{> TodosPanel}}
+  </div>
+</body>
+
+<template name='TodosPanel'>
+  <div class='todos-panel'>
+    {{> CreateTodoItem}}
+    <ul class='todos-list'>
+      {{#each items}}
+        <li class='todo-item {{isDoneClass}}'>
+          {{> TodoItem}}
+        </li>
+      {{else}}
+        <li class='todo-item empty'>
+          No todos yet.
+        </li>
+      {{/each}}
+    </ul>
+    {{> TodosCount}}
+  </div>
+</template>
+
+<template name='TodoItem'>
+  <div class='done'>
+    <input type='CHECKBOX' name='is_done' {{isDoneChecked}} />
+  </div>
+  <div class='subject'>
+    {{subject}}
+  </div>
+</template>
+
+<template name='CreateTodoItem'>
+  <form class='create-todo'>
+    <input type='text' placeholder='Create new todo...'/>
+  </form>
+</template>
+
+<template name='TodosCount'>
+  <div class='todos-count'>
+    {{completedCount}} / {{totalCount}} todos completed
+  </div>
+</template>
