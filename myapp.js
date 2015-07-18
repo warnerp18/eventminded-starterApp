@@ -65,4 +65,18 @@ if (Meteor.isServer) {
   Meteor.publish('todos', function(){
      return Todos.find({user_id: this.userId});
   });
+
+  Todos.allow({
+    insert: function(userId, doc){
+      return userId;
+    },
+
+    update: function(userId, doc, fieldNames, modifier){
+      return doc.user_id === userId;
+    },
+
+    remove: function (userId, doc){
+       return doc.user_id === userId;
+    }
+  });
 }

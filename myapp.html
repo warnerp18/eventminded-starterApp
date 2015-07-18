@@ -9,7 +9,6 @@
     </div>
     {{> TodosPanel}}
   </div>
-  <h1>MY NAME IS PHIL</h1>
 </body>
 
 <template name='TodosPanel'>
@@ -41,7 +40,11 @@
 
 <template name='CreateTodoItem'>
   <form class='create-todo'>
-    <input type='text' placeholder='Create new todo...'/>
+    {{#if currentUser}}
+      <input type='text' placeholder='Create new todo...'/>
+    {{else}}
+      <input type='text' readonly placeholder='Sign in to create todos...'/>
+    {{/if}}
   </form>
 </template>
 
