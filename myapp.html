@@ -18,6 +18,7 @@
       {{#each items}}
         <li class='todo-item {{isDoneClass}}'>
           {{> TodoItem}}
+          {{> DeleteItem}}
         </li>
       {{else}}
         <li class='todo-item empty'>
@@ -46,6 +47,10 @@
       <input type='text' readonly placeholder='Sign in to create todos...'/>
     {{/if}}
   </form>
+</template>
+
+<template name='DeleteItem'>
+  <button class='delete'>&times;</button>
 </template>
 
 <template name='TodosCount'>

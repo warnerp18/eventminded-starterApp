@@ -50,6 +50,11 @@ if (Meteor.isClient) {
       form.reset();
     }
   });
+  Template.DeleteItem.events({
+    'click .delete': function () {
+      Todos.remove(this._id);
+    }
+  });
   Template.TodosCount.helpers({
     completedCount: function(){
       return Todos.find({is_done: true}).count();
